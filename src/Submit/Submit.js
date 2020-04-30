@@ -2,7 +2,7 @@ import React from 'react'
 
 const Submit = (props) => {
     return (
-        <button onClick={props.clicked} className="Submit">{props.name}</button>
+        <button onClick={props.clicked}>{props.name}</button>
     )
 }
 

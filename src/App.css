@@ -4,8 +4,11 @@
 
 table {
   border-collapse: collapse;
+  table-layout: fixed;
+  width: 20%;  
 }
 
 table, td {
   border: 1px solid black;
 }
+

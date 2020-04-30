@@ -21,25 +21,23 @@ class App extends Component {
     const index = this.state.fruits.findIndex((currentIndex) => currentIndex.key === pos);
     let fruits = [...this.state.fruits];
     fruits.splice(index, 1);
-    this.setState({
-      fruits: fruits
-    })
+    this.setState({fruits: fruits});
   }
 
   render() {
-
+      
     let fruits = (
       this.state.fruits.map((fruit) => {
         return (
-          <table>
-            <Table deleteHandler={this.deleteHandler} name={fruit.name} qty={fruit.qty} index={fruit.key}/>
+          <table key={fruit.key}>
+            <Table name={fruit.name} qty={fruit.qty} deleteHandler={this.deleteHandler} index={fruit.key}/>
           </table>
         )
       })
     )
     return (
       <div className="App">
-         <Form changed = {this.inputHandler} />
+         <Form changed={this.inputHandler} />
         {fruits}
       </div>
     );
