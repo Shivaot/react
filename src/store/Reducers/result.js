@@ -1,6 +1,6 @@
-import * as actionTypes from './actions';
+import * as actionTypes from '../actions';
 
-const initialState = { counter: 0, results: [] };
+const initialState = {results: [] };
 
 // here the return does not merges the old and new state but returns the new state overriding the older one
 // handling immutability:
@@ -8,29 +8,10 @@ const initialState = { counter: 0, results: [] };
 // -> Object.assign({},state)
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case actionTypes.INCREMENT:
-			const newState = Object.assign({}, state); // again this is not deep copyin
-			newState.counter = state.counter + 1;
-			return newState;
-		case actionTypes.DECREMENT:
-			return {
-				...state,
-				counter: state.counter - 1,
-			};
-		case actionTypes.ADD:
-			return {
-				...state,
-				counter: state.counter + action.value,
-			};
-		case actionTypes.SUBTRACT:
-			return {
-				...state,
-				counter: state.counter - action.value,
-			};
 		case actionTypes.STORE:
 			return {
 				...state,
-				results: state.results.concat({ value: state.counter, id: new Date() }), // concat creates a array copy where as push overrides the older one
+				results: state.results.concat({ value: action.result, id: new Date() }), // concat creates a array copy where as push overrides the older one
 			};
 		case actionTypes.DELETE:
         /* (one way of removing)
